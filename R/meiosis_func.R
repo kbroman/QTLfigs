@@ -1,6 +1,6 @@
 ######################################################################
 #
-# func.R
+# meiosis_func.R
 #
 # Karl W Broman, Johns Hopkins University
 # 18 Nov 2003
@@ -10,7 +10,7 @@
 ######################################################################
 
 ##############################
-# meiosis.sub <- 
+# meiosis.sub <-
 #
 # Simulate the locations of crossovers on a meiotic product
 # via the chi-square model (m=0 corresponds to no interference)
@@ -22,7 +22,7 @@ function(L, m=10, obligate.chiasma=TRUE)
 {
   if(obligate.chiasma) { # adjust mean no. chiasmata
     if(L <= 50) stop("L must be > 50 cM")
-    if(m==0) f <- function(Lstar,f.L,f.m) f.L-Lstar/(1-exp(-Lstar/50)) 
+    if(m==0) f <- function(Lstar,f.L,f.m) f.L-Lstar/(1-exp(-Lstar/50))
     else {
       f <- function(Lstar,f.L,f.m=0)
         {
@@ -69,7 +69,7 @@ function(L, m=10, obligate.chiasma=TRUE)
       else xo <- sort(sample(chi.loc,n.xo,repl=FALSE))
     }
   }
-    
+
   if(length(xo) == 0) xo <- NULL
   xo
 }
@@ -86,7 +86,7 @@ function(L, allele=1)
   if(length(allele) == 1) allele <- rep(allele,2)
   if(length(allele) != 2)
     stop("allele should be of length 1 or 2")
-  
+
   list(mat=rbind(c(0,L),allele[1]),
        pat=rbind(c(0,L),allele[2]))
 }
@@ -116,7 +116,7 @@ function(parent, m=10, obligate.chiasma=TRUE)
   else {
     for(i in 1:length(product)) {
 #      cat("\t",i,a,"\n")
-      if(i == 1) 
+      if(i == 1)
         result <- parent[[a]][,parent[[a]][1,]<product[1],drop=FALSE]
       else {
         temp <- parent[[a]][1,]>=product[i-1] & parent[[a]][1,]<product[i]
@@ -133,7 +133,7 @@ function(parent, m=10, obligate.chiasma=TRUE)
   # clean out excess stuff in the result
   if(ncol(result)>2) {
     keep <- rep(TRUE,ncol(result))
-    for(i in 2:(ncol(result)-1)) 
+    for(i in 2:(ncol(result)-1))
       if(result[2,i] == result[2,i+1])
         keep[i] <- FALSE
   }
@@ -214,10 +214,10 @@ function(L,n.gen=20,m=10,obligate.chiasma=TRUE)
     }
     return(result)
   }
-        
+
 }
-    
-    
+
+
 ##############################
 # where.het
 #

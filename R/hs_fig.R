@@ -26,7 +26,7 @@ for(i in 1:8) {
 }
 
 set.seed(11716365)
-source("func.R")
+source("meiosis_func.R")
 gen <- vector("list", n.lines)
 for(i in 1:n.lines)
   gen[[i]] <- create.par(100, sample(1:8, 2))
