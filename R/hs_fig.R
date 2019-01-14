@@ -5,7 +5,7 @@
 n.lines <- 80
 
 bgcolor <- broman::brocolors("bg")
-color <- qtl2plot::CCcolors
+color <- qtl2::CCcolors
 
 pdf("../Figs/hs.pdf", width=9.75, height=6.5, pointsize=16, onefile=TRUE)
 par(mar=rep(0.1,4),las=1,fg="white",col="white",col.axis="white",col.lab="white",
