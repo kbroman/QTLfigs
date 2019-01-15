@@ -37,31 +37,35 @@ points(432,385,pch=4,cex=1.3)
 segments(432,370,432,350)
 
 
-#f1 <- create.par(100,c(1,2))
-#set.seed(994)
-#f2 <- vector("list",10)
-#for(i in 1:10) f2[[i]] <- cross(f1,f1,m=10,obl=TRUE)
-#f3 <- vector("list",10)
-#for(i in 1:5) {
-#  f3[[2*i-1]] <- cross(f2[[2*i-1]],f2[[2*i]],m=10,obl=TRUE)
-#  f3[[2*i]] <- cross(f2[[2*i-1]],f2[[2*i]],m=10,obl=TRUE)
-#}
-#f4 <- vector("list",10)
-#for(i in 1:5) {
-# f4[[2*i-1]] <- cross(f3[[2*i-1]],f3[[2*i]],m=10,obl=TRUE)
-#  f4[[2*i]] <- cross(f3[[2*i-1]],f3[[2*i]],m=10,obl=TRUE)
-#}
-#temp <- f4
-#my.ri8 <- vector("list",10)
-#for(j in 1:40) {
-#  for(i in 1:5) {
-#    my.ri8[[2*i-1]] <- cross(temp[[2*i-1]],temp[[2*i]],m=10,obl=TRUE)
-#    my.ri8[[2*i]] <- cross(temp[[2*i-1]],temp[[2*i]],m=10,obl=TRUE)
-#  }
-#  temp <- my.ri8
-#}
-#save(f1,f2,f3,f4,my.ri8,file="for_rilines_fig.RData")
-load("for_rilines_fig.RData.gz")
+file <- "_cache/for_rilines_fig.RData"
+if(file.exists(file)) {
+    load(file)
+} else {
+    f1 <- create.par(100,c(1,2))
+    set.seed(994)
+    f2 <- vector("list",10)
+    for(i in 1:10) f2[[i]] <- cross(f1,f1,m=10,obl=TRUE)
+    f3 <- vector("list",10)
+    for(i in 1:5) {
+        f3[[2*i-1]] <- cross(f2[[2*i-1]],f2[[2*i]],m=10,obl=TRUE)
+        f3[[2*i]] <- cross(f2[[2*i-1]],f2[[2*i]],m=10,obl=TRUE)
+    }
+    f4 <- vector("list",10)
+    for(i in 1:5) {
+        f4[[2*i-1]] <- cross(f3[[2*i-1]],f3[[2*i]],m=10,obl=TRUE)
+        f4[[2*i]] <- cross(f3[[2*i-1]],f3[[2*i]],m=10,obl=TRUE)
+    }
+    temp <- f4
+    my.ri8 <- vector("list",10)
+    for(j in 1:40) {
+        for(i in 1:5) {
+            my.ri8[[2*i-1]] <- cross(temp[[2*i-1]],temp[[2*i]],m=10,obl=TRUE)
+            my.ri8[[2*i]] <- cross(temp[[2*i-1]],temp[[2*i]],m=10,obl=TRUE)
+        }
+        temp <- my.ri8
+    }
+    save(f1,f2,f3,f4,my.ri8,file=file)
+}
 
 xloc <- 38
 mult <- 40/f2[[1]]$mat[1,ncol(f2[[1]]$mat)]

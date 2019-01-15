@@ -1,4 +1,3 @@
-
 ##############################
 # RI lines
 ##############################
@@ -48,7 +47,7 @@ for(i in 1:4) {
 #  text(xloc,350,paste(LETTERS[2*i-1],LETTERS[2*i],sep=""),adj=c(0.5,1))
   text(xloc-14,350,LETTERS[2*i-1],adj=c(0.5,1))
   text(xloc+14,350,LETTERS[2*i],adj=c(0.5,1))
-  
+
   xloc <- xloc+(38+55)*2+50
 }
 xxloc <- c(mean(xxloc[1:2]),mean(xxloc[3:4]))
@@ -58,23 +57,27 @@ points(xxloc[2],380,pch=4,cex=1.3)
 arrows(xxloc[2],365,xxloc[2],330,len=0.1)
 text(u[1],380,expression(G[1]),adj=c(0,0.5))
 
-#f1 <- vector("list",4)
-#for(i in 1:4) f1[[i]] <- create.par(100,c(2*i-1,2*i))
-#set.seed(112099)
-#f2a <- cross(f1[[1]],f1[[2]],m=10,obl=TRUE)
-#f2b <- cross(f1[[3]],f1[[4]],m=10,obl=TRUE)
-#f3a <- cross(f2a,f2b,m=10,obl=TRUE)
-#f3b <- cross(f2a,f2b,m=10,obl=TRUE)
-#f4a <- cross(f3a,f3b,m=10,obl=TRUE)
-#f4b <- cross(f3a,f3b,m=10,obl=TRUE)
-#temp <- list(f4a,f4b)
-#for(i in 1:30) {
-#  fa <- cross(temp[[1]],temp[[2]],m=10,obl=TRUE)
-#  fb <- cross(temp[[1]],temp[[2]],m=10,obl=TRUE)
-#  temp <- list(fa,fb)
-#}
-#save(f1,f2a,f2b,f3a,f3b,f4a,f4b,fa,file="for_ri8_fig.RData")
-load("for_ri8_fig.RData.gz")
+file <- "_cache/for_ri8_fig.RData"
+if(file.exists(file)) {
+    load(file)
+} else {
+    f1 <- vector("list",4)
+    for(i in 1:4) f1[[i]] <- create.par(100,c(2*i-1,2*i))
+    set.seed(112099)
+    f2a <- cross(f1[[1]],f1[[2]],m=10,obl=TRUE)
+    f2b <- cross(f1[[3]],f1[[4]],m=10,obl=TRUE)
+    f3a <- cross(f2a,f2b,m=10,obl=TRUE)
+    f3b <- cross(f2a,f2b,m=10,obl=TRUE)
+    f4a <- cross(f3a,f3b,m=10,obl=TRUE)
+    f4b <- cross(f3a,f3b,m=10,obl=TRUE)
+    temp <- list(f4a,f4b)
+    for(i in 1:30) {
+        fa <- cross(temp[[1]],temp[[2]],m=10,obl=TRUE)
+        fb <- cross(temp[[1]],temp[[2]],m=10,obl=TRUE)
+        temp <- list(fa,fb)
+    }
+    save(f1,f2a,f2b,f3a,f3b,f4a,f4b,fa,file=file)
+}
 
 rect(xxloc[1]-19,320,xxloc[1]- 9,280,col=color[1],border=color[1], lend=1, ljoin=1)
 rect(xxloc[1]+ 9,320,xxloc[1]+19,280,col=color[3],border=color[3], lend=1, ljoin=1)
