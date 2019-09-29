@@ -39,15 +39,21 @@ if(file.exists(file)) {
 }
 
 for(bw in c(TRUE,FALSE)) { # TRUE,FALSE if you want both versions
+for(incl_effects in c(TRUE,FALSE)) {
 
 fgcolor <- ifelse(bw, "black", "white")
 
+file <- "../Figs/lodcurve_insulin"
+if(incl_effects) file <- paste0(file, "_with_effects")
+if(bw) file <- paste0(file, "_light")
+file <- paste0(file, ".pdf")
+
+
+pdf(file, width=9.75, height=5, pointsize=14)
 if(bw) {
-pdf("../Figs/lodcurve_insulin_with_effects_light.pdf", width=9.75, height=5, pointsize=14)
-par(fg="black", col="black", col.axis="black", col.lab="black", bg="white")
+    par(fg="black", col="black", col.axis="black", col.lab="black", bg="white")
 } else {
-pdf("../Figs/lodcurve_insulin_with_effects.pdf", width=9.75, height=5, pointsize=14)
-par(fg=fgcolor, col=fgcolor, col.axis=fgcolor, col.lab=fgcolor, bg=bgcolor)
+    par(fg=fgcolor, col=fgcolor, col.axis=fgcolor, col.lab=fgcolor, bg=bgcolor)
 }
 par(mar=c(5.1,4.1,0.1,0.1))
 if(bw) color[1] <- "slateblue"
@@ -56,6 +62,9 @@ plot(out, col=color[1], ylab="LOD score",
 
 
 abline(h=quantile(operm, 0.95), lty=2, col=color[2])
+
+if(!incl_effects) next  # skip the rest if no effects
+
 yd <- 1
 xl <- xaxisloc.scanone(out, c(4,7), c(0,0))
 yl <- c(max(out, chr=5:7)[,3]+yd, par("usr")[4]-yd*0.1)
@@ -96,4 +105,5 @@ for(i in 1:2)
 rect(xl[1], yl[1], xl[2], yl[2], border=fgcolor)
 
 dev.off()
+}
 }
