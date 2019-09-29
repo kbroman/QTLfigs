@@ -1,6 +1,7 @@
 R_OPTS=--no-save --no-restore --no-init-file --no-site-file
 
 all: Figs/ail.pdf \
+	 Figs/ail_light.pdf \
 	 Figs/batches_fig1.pdf \
 	 Figs/causal_network.pdf \
 	 Figs/congenic.pdf \
@@ -18,6 +19,9 @@ all: Figs/ail.pdf \
 	 Figs/scale_fig1.pdf
 
 Figs/ail.pdf: R/ail_fig.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/ail_light.pdf: R/ail_fig_light.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/batches_fig1.pdf: R/batches_fig.R
