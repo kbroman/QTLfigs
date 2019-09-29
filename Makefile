@@ -7,7 +7,9 @@ all: Figs/ail.pdf \
 	 Figs/data_fig.png \
 	 Figs/epistasis_f2.pdf \
 	 Figs/hs.pdf \
+	 Figs/hs_light.pdf \
 	 Figs/intercross.pdf \
+	 Figs/intercross_light.pdf \
 	 Figs/lodcurve_insulin_with_effects.pdf \
 	 Figs/pleiotropy_network.pdf \
 	 Figs/ri8.pdf \
@@ -36,7 +38,13 @@ Figs/epistasis_f2.pdf: R/epistasis_fig.R
 Figs/hs.pdf: R/hs_fig.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
+Figs/hs_light.pdf: R/hs_fig_light.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
 Figs/intercross.pdf: R/intercross.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/intercross_light.pdf: R/intercross_light.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/lodcurve_insulin_with_effects.pdf: R/lodcurve_insulin.R
