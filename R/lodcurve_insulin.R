@@ -55,7 +55,7 @@ if(bw) {
 } else {
     par(fg=fgcolor, col=fgcolor, col.axis=fgcolor, col.lab=fgcolor, bg=bgcolor)
 }
-par(mar=c(5.1,4.1,0.1,0.1))
+par(mar=c(5.1,4.1,0.6,0.6))
 if(bw) color[1] <- "slateblue"
 plot(out, col=color[1], ylab="LOD score",
      bandcol=ifelse(bw, "gray92", "gray18"))
