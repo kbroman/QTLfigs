@@ -15,7 +15,7 @@ all: Figs/ail.pdf \
 	 Figs/pleiotropy_network.pdf \
 	 Figs/ri8.pdf \
 	 Figs/rilines.pdf \
-	 Figs/riself.pdf
+	 Figs/riself.pdf \
 	 Figs/rqtl2_scan.pdf \
 	 Figs/scale_fig1.pdf
 
