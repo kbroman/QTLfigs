@@ -58,7 +58,7 @@ if(bw) {
 par(mar=c(5.1,4.1,0.1,0.1))
 if(bw) color[1] <- "slateblue"
 plot(out, col=color[1], ylab="LOD score",
-     bandcol=ifelse(bw, "gray92", "white"))
+     bandcol=ifelse(bw, "gray92", "gray18"))
 
 
 abline(h=quantile(operm, 0.95), lty=2, col=color[2])
