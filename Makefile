@@ -14,6 +14,7 @@ all: Figs/ail.pdf \
 	 Figs/lodcurve_insulin_with_effects.pdf \
 	 Figs/pleiotropy_network.pdf \
 	 Figs/ri8.pdf \
+	 Figs/ri8self.pdf \
 	 Figs/rilines.pdf \
 	 Figs/riself.pdf \
 	 Figs/rqtl2_scan.pdf \
@@ -59,6 +60,9 @@ Figs/pleiotropy_network.pdf: R/pleiotropy_network.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/ri8.pdf: R/ri8_fig.R R/colors.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/ri8self.pdf: R/ri8self_fig.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/rilines.pdf: R/rilines_fig.R
