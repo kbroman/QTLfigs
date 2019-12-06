@@ -15,6 +15,7 @@ all: Figs/ail.pdf \
 	 Figs/pleiotropy_network.pdf \
 	 Figs/ri8.pdf \
 	 Figs/rilines.pdf \
+	 Figs/riself.pdf
 	 Figs/rqtl2_scan.pdf \
 	 Figs/scale_fig1.pdf
 
@@ -61,6 +62,9 @@ Figs/ri8.pdf: R/ri8_fig.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/rilines.pdf: R/rilines_fig.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/riself.pdf: R/riself_fig.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/rqtl2_scan.pdf: R/rqtl2_figs.R R/colors.R
