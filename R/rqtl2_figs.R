@@ -37,8 +37,8 @@ if(file.exists(file)) {
     # snp asso
     li <- lod_int(out_loco, pmap[17])
     library(RSQLite)
-    db <- dbConnect(SQLite(), "~/Projects/AttieDO/DerivedData/ccfoundersnps.sqlite")
-    snpinfo <- dbGetQuery(db, paste0("SELECT * FROM snps WHERE chr=='17' AND pos_Mbp >= ",
+    db <- dbConnect(SQLite(), "~/Data/CCdb/cc_variants.sqlite")
+    snpinfo <- dbGetQuery(db, paste0("SELECT * FROM variants WHERE chr=='17' AND pos_Mbp >= ",
                           li[1], " AND pos_Mbp <= ", li[3]))
     dbDisconnect(db)
     snpinfo <- index_snps(pmap[17], snpinfo)
