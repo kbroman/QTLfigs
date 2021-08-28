@@ -7,6 +7,7 @@ all: Figs/ail.pdf \
 	 Figs/congenic.pdf \
 	 Figs/data_fig.png \
 	 Figs/epistasis_f2.pdf \
+	 Figs/hmm.pdf \
 	 Figs/hs.pdf \
 	 Figs/hs_light.pdf \
 	 Figs/intercross.pdf \
@@ -39,6 +40,9 @@ Figs/data_fig.png: R/data_fig.R R/viridis.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/epistasis_f2.pdf: R/epistasis_fig.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/hmm.pdf: R/hmm.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/hs.pdf: R/hs_fig.R
