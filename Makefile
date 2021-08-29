@@ -15,16 +15,17 @@ all: Figs/ail.pdf \
 	 Figs/lodcurve_insulin_with_effects.pdf \
 	 Figs/pleiotropy_network.pdf \
 	 Figs/ri8.pdf \
+	 Figs/ri8X.pdf \
 	 Figs/ri8self.pdf \
 	 Figs/rilines.pdf \
 	 Figs/riself.pdf \
 	 Figs/rqtl2_scan.pdf \
 	 Figs/scale_fig1.pdf
 
-Figs/ail.pdf: R/ail_fig.R
+Figs/ail.pdf: R/ail_fig.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/ail_light.pdf: R/ail_fig_light.R
+Figs/ail_light.pdf: R/ail_fig_light.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/batches_fig1.pdf: R/batches_fig.R
@@ -45,34 +46,37 @@ Figs/epistasis_f2.pdf: R/epistasis_fig.R
 Figs/hmm.pdf: R/hmm.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/hs.pdf: R/hs_fig.R
+Figs/hs.pdf: R/hs_fig.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/hs_light.pdf: R/hs_fig_light.R
+Figs/hs_light.pdf: R/hs_fig_light.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/intercross.pdf: R/intercross.R
+Figs/intercross.pdf: R/intercross.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/intercross_light.pdf: R/intercross_light.R
+Figs/intercross_light.pdf: R/intercross_light.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/lodcurve_insulin_with_effects.pdf: R/lodcurve_insulin.R
+Figs/lodcurve_insulin_with_effects.pdf: R/lodcurve_insulin.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/pleiotropy_network.pdf: R/pleiotropy_network.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/ri8.pdf: R/ri8_fig.R R/colors.R
+Figs/ri8.pdf: R/ri8_fig.R R/colors.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/ri8self.pdf: R/ri8self_fig.R R/colors.R
+Figs/ri8X.pdf: R/ri8X_fig.R R/colors.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/rilines.pdf: R/rilines_fig.R
+Figs/ri8self.pdf: R/ri8self_fig.R R/colors.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
-Figs/riself.pdf: R/riself_fig.R
+Figs/rilines.pdf: R/rilines_fig.R R/colors.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/riself.pdf: R/riself_fig.R R/meiosis_func.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/rqtl2_scan.pdf: R/rqtl2_figs.R R/colors.R
