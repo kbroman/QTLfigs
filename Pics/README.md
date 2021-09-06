@@ -2,7 +2,7 @@
 
 - `cc_founders.png` is from
   [UNC Computational Genetics](http://compgen.unc.edu)
-  specifically: http://compgen.unc.edu/wp/wp-content/uploads/2009/03/ccmice.png>
+  specifically: <http://compgen.unc.edu/wp/wp-content/uploads/2009/03/ccmice.png>
 
 - `cc-zero.png` is from [Creative Commons](https://creativecommons.org)
 
