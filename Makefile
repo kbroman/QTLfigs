@@ -21,7 +21,9 @@ all: Figs/ail.pdf \
 	 Figs/riself.pdf \
 	 Figs/rqtl2_scan.pdf \
 	 Figs/scale_fig1.pdf \
-	 Figs/permtest.pdf
+	 Figs/permtest.pdf \
+	 Figs/perm_hist.pdf \
+	 Figs/lodsupint.pdf
 
 Figs/ail.pdf: R/ail_fig.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
