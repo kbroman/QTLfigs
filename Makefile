@@ -20,7 +20,8 @@ all: Figs/ail.pdf \
 	 Figs/rilines.pdf \
 	 Figs/riself.pdf \
 	 Figs/rqtl2_scan.pdf \
-	 Figs/scale_fig1.pdf
+	 Figs/scale_fig1.pdf \
+	 Figs/permtest.pdf
 
 Figs/ail.pdf: R/ail_fig.R R/meiosis_func.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
@@ -83,4 +84,7 @@ Figs/rqtl2_scan.pdf: R/rqtl2_figs.R R/colors.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
 
 Figs/scale_fig1.pdf: R/scale_fig.R
+	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
+
+Figs/%.pdf: R/%.R
 	cd $(<D);R $(R_OPTS) -e "source('$(<F)')"
