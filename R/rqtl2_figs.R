@@ -38,8 +38,8 @@ if(file.exists(file)) {
     li <- lod_int(out_loco, pmap[17])
     library(RSQLite)
     db <- dbConnect(SQLite(), "~/Data/CCdb/cc_variants.sqlite")
-    snpinfo <- dbGetQuery(db, paste0("SELECT * FROM variants WHERE chr=='17' AND pos_Mbp >= ",
-                          li[1], " AND pos_Mbp <= ", li[3]))
+    snpinfo <- dbGetQuery(db, paste0("SELECT * FROM variants WHERE chr=='17' AND pos >= ",
+                          li[1]*1e6, " AND pos <= ", li[3]*1e6))
     dbDisconnect(db)
     snpinfo <- index_snps(pmap[17], snpinfo)
     snp_pr <- genoprob_to_snpprob(apr[,17], snpinfo)
